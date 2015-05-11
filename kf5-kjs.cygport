@@ -1,0 +1,29 @@
+inherit kf5
+
+NAME="kf5-kjs"
+VERSION=5.9.0
+RELEASE=1
+CATEGORY="Libs"
+SUMMARY="KDE 5 JavaScript engine"
+DESCRIPTION="This library provides an ECMAScript compatible interpreter for KDE."
+SRC_URI="mirror://kde/stable/frameworks/${VERSION%\.*}/portingAids/${NAME#kf5-}-${VERSION}.tar.xz"
+
+PKG_NAMES="libKF5JS5 libKF5JS-devel"
+libKF5JS5_CONTENTS="
+	usr/bin/kjs5.exe
+	usr/bin/cygKF5JS-5.dll
+	usr/bin/cygKF5JSApi-5.dll
+	usr/share/doc/
+	usr/share/kf5/kjs/
+	usr/share/man/
+"
+libKF5JS_devel_REQUIRES="libQt5Core-devel"
+libKF5JS_devel_CONTENTS="
+	usr/include/KF5/kjs*
+	usr/include/KF5/wtf/
+	usr/lib/cmake/KF5JS/
+	${QT5_MKSPECSDIR#/}/modules/qt_KJS.pri
+	${QT5_MKSPECSDIR#/}/modules/qt_KJSApi.pri
+	usr/lib/libKF5JS.dll.a
+	usr/lib/libKF5JSApi.dll.a
+"
